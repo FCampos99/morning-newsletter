@@ -1,0 +1,30 @@
+name: Morning Newsletter
+
+on:
+  schedule:
+    - cron: "0 8 * * *"   # 08:00 UTC = 09:00 Lisbon (summer) / 08:00 (winter)
+  workflow_dispatch:       # allows manual trigger from GitHub UI
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate and send newsletter
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          TO_EMAIL:  ${{ secrets.TO_EMAIL }}
+        run: python newsletter.py --email

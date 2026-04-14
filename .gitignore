@@ -1,0 +1,5 @@
+.env
+newsletter.html
+newsletter.log
+__pycache__/
+*.pyc

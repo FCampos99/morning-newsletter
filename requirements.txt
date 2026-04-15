@@ -1,3 +1,7 @@
 requests>=2.31
 feedparser>=6.0
 python-dotenv>=1.0
+
+# flight_search.py
+fast-flights>=2.2        # Google Flights wrapper, no API key needed
+playwright>=1.40         # headless Chromium (run: playwright install chromium)

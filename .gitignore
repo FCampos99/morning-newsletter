@@ -1,5 +1,7 @@
 .env
 newsletter.html
 newsletter.log
+flights.html
+flights_cache.json
 __pycache__/
 *.pyc
